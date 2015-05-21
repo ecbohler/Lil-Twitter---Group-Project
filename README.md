@@ -3,14 +3,15 @@ Lil-Twitter Group Project
 
 ### MVP Goals
 
-1. A user can log in
-2. A user can see others' profile pages with all their updates
-3. A user can post status updates (140 char limit)
-4. A user can follow other users
-5. A user can see a list of their followers
-6. A user can see a list of who they are following
-7. A user can see updates from those they are following
-8. A user has a profile page
+1. A user can log in X
+2. A user has a profile page X
+3. A user can post status updates (140 char limit) - new tweets X
+4. A user can follow other users X
+5. A user can see a list of their followers X
+6. A user can see a list of who they are following X
+7. A user can see a page list all of their tweets X
+8. A user can see a page that list all their tweets and the tweets of the people they follow X
+10. A user can see others' profile pages with all their updates X
 
 ### Stretch Goals
 
