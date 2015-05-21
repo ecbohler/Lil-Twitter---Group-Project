@@ -1,6 +1,4 @@
 require 'rake'
-require 'rspec/core/rake_task'
-
 
 require ::File.expand_path('../config/environment', __FILE__)
 
@@ -110,6 +108,13 @@ namespace :db do
     end
   end
 
+  desc "rollback your migration--use STEP=number to step back multiple times"
+  task :rollback do
+    step = (ENV['STEP'] || 1).to_i
+    ActiveRecord::Migrator.rollback('db/migrate', step)
+    Rake::Task['db:version'].invoke if Rake::Task['db:version']
+  end
+
   desc "Populate the database with dummy data by running db/seeds.rb"
   task :seed do
     require APP_ROOT.join('db', 'seeds.rb')
@@ -118,13 +123,6 @@ namespace :db do
   desc "Returns the current schema version number"
   task :version do
     puts "Current version: #{ActiveRecord::Migrator.current_version}"
-  end
-
-  desc "rollback your migration--use STEPS=number to step back multiple times"
-  task :rollback do
-    steps = (ENV['STEPS'] || 1).to_i
-    ActiveRecord::Migrator.rollback('db/migrate', steps)
-    Rake::Task['db:version'].invoke if Rake::Task['db:version']
   end
 
   namespace :test do
@@ -140,7 +138,14 @@ task "console" do
   exec "irb -r./config/environment"
 end
 
-desc "Run the specs"
-RSpec::Core::RakeTask.new(:spec)
+
+# In a production environment like Heroku, RSpec might not
+# be available.  To handle this, rescue the LoadError.
+# https://devcenter.heroku.com/articles/getting-started-with-ruby-o#runtime-dependencies-on-development-test-gems
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+end
 
 task :default  => :spec
