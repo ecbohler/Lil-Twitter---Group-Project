@@ -20,7 +20,7 @@ Stretch:
 5. Retweet author
 6. Validations and Password Encryption
 
-Tasks for MVP:
+Tasks/Responsibilities for MVP:
 1. Login - group of 2: Dani and Erica
 2. Route/ERBs - group of 2: Teresa and Jerome
 3. DB Assocations/Models/Migrations - group of 2: Majd and Paul
