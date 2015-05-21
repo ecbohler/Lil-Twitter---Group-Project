@@ -1,70 +1,77 @@
-HTTP Verb Path  Controller#Action Used for
-GET /photos photos#index  display a list of all photos
-GET /photos/new photos#new  return an HTML form for creating a new photo
-POST  /photos photos#create create a new photo
-GET /photos/:id photos#show display a specific photo
-GET /photos/:id/edit  photos#edit return an HTML form for editing a photo
-PATCH/PUT /photos/:id photos#update update a specific photo
-DELETE  /photos/:id photos#destroy  delete a specific photo
+# HTTP Verb Path  Controller#Action Used for
+# GET /photos photos#index  display a list of all photos
+# GET /photos/new photos#new  return an HTML form for creating a new photo
+# POST  /photos photos#create create a new photo
+# GET /photos/:id photos#show display a specific photo
+# GET /photos/:id/edit  photos#edit return an HTML form for editing a photo
+# PATCH/PUT /photos/:id photos#update update a specific photo
+# DELETE  /photos/:id photos#destroy  delete a specific photo
 
-
-get '/' do #signup/signin page
-  erb :index
-end
+# get '/' do #show form to signin page and link to sign up
+#   erb :index
+# end
 
 #----------------user routes
 
 get '/users' do #would display all users
+  erb :"/users/index"
 end
 
-get '/users/new' do #show us a form to create a new user
+# get '/users/new' do #show us a form to sign up
+#   erb :"/users/new"
+# end
+
+# post '/users' do # will create a new user and redirect '/users/:id'
+#   User.new(handle: params[:handle], password_hash: params[:password])
+#   redirect '/users/:id'
+# end
+
+get '/users/:user_id/tweets' do #would display one user and their tweets & have a form to make a tweet ( this information is sent to post)
+  erb :"/users/show"
 end
 
-post '/users' do # will ccreat a new user and redirect '/users/:id'
+get '/users/:user_id/feed' do #A user can see a page that list all their tweets and the tweets of the people they follow
+  erb :"/users/feed"
 end
 
-get '/users/:id' do #would display one user and their tweets & have a form to make a tweet ( this information is sent to post)
+# get '/users/:user_id/profile' do #this will simply display the users profile
+#   erb :"/users/profile"
+# end
+
+get '/users/:user_id/edit' do #this will display a form to br able to edit a user profile
+  erb :"/users/edit"
 end
 
-get '/users/:id/feed' do #A user can see a page that list all their tweets and the tweets of the people they follow
+put '/users/:user_id' do #this will process th form from get '/users/:id/edit' and update user profile
+
+  redirect "/users/#{params[:user_id]}/profile"
 end
 
-get '/users/:id/profile' do #this will simply display the users profile
+delete '/users/:user_id' do #delete a specifc user
+  redirect "/"
 end
 
-get '/users/:id/edit' do #this will display a form to br able to edit a user profile
+get '/users/:user_id/followers' do #this is a route that =will display a list of the users followers
+  erb :'/users/followers'
 end
 
-put '/users/:id' do #this will process th form from get '/users/:id/edit' and update user profile
-end
-
-delete '/users/:id' do #delete a specifc user
-end
-
-get '/users/:id/followers' do #this is a route that =will display a list of the users followers
-end
-
-get '/users/:id/following' do #display a llist of who that user is following
+get '/users/:user_id/following' do #display a llist of who that user is following
+  erb :'/users/following'
 end
 
 #-------------Tweet route
 
-post '/users/:id/tweet' do #creates tweet and redirects to page to view all tweets made by that user
-
-redirect '/users/:id'
+post '/users/:user_id/tweet' do #creates tweet and redirects to page to view all tweets made by that user
+  redirect '/users/:user_id'
 end
 
-get '/users/:id/tweet/:id' do #view a single tweet
+get '/users/:user_id/tweet/:tweet_id' do #view a single tweet
+  erb :'tweets/show'
 end
-
-
-
-
-
 
 #-------------Follow route
-post 'users/:id/follow' do #sends information to follow this user - redirects to that users page
- redirect '/users/:id'
+post 'users/:user_id/follow' do #sends information to follow this user - redirects to that users page
+ redirect '/users/:user_id'
 end
 
 
