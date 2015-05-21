@@ -1,30 +1,32 @@
-> **Note**: This branch (master) contains a skeleton without any app code, perfect for creating a _new_ application or challenge. If you're looking for an example app built with this skeleton, take a look at the [example](/../..//tree/example) branch which includes basic CRUD and RSpec tests.
-
 ### Purpose
-The Sinatra Skeleton:
+Lil-Twitter Group Project
 
-1. Provides a foundation for building challenges or creating a new Sinatra application.
-2. Demonstrates a reasonable set of practices around building Sinatra applications.
-3. Eases the transition to Rails for Dev Bootcamp students
+### MVP Goals
 
-### Quickstart
+1. A user can log in
+2. A user can see others' profile pages with all their updates
+3. A user can post status updates (140 char limit)
+4. A user can follow other users
+5. A user can see a list of their followers
+6. A user can see a list of who they are following
+7. A user can see updates from those they are following
+8. A user has a profile page
 
-1.  `bundle install`
-2.  `shotgun config.ru`
+### Stretch Goals
 
-As needed, create models & migrations with the `rake` tasks:
+1. A user can retweet others' status updates
+2. A user sees a styled site
+3. A user sees a responsively styled site
+4. A user can link a gravatar image
+5. Retweet author
+6. Validations and Password Encryption
 
-```
-rake generate:migration  # Create an empty migration in db/migrate, e.g., rake generate:migration NAME=create_tasks
-rake generate:model      # Create an empty model in app/models, e.g., rake generate:model NAME=User
-```
+### Tasks/Responsibilities
 
-### Contributing
-
-We would love for you to help make the skeleton more awesome, There are three ways to contribute:
-
-1. Ask for a bug fix or enhancement!
-2. Submit a pull request for a bug fix or enhancement!
-3. Code review an open pull request!
+1. Login - group of 2: Dani and Erica
+2. Routes/ERBs - group of 2: Teresa and Jerome
+3. DB Associations/Models/Migrations - group of 2: Majd and Paul
+4. Schema - Complete
+5. Testing - Continuous process for the group
 
 Be prepared to give and receive specific, actionable, and kind feedback!
