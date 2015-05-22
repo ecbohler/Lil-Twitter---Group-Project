@@ -1,0 +1,10 @@
+<div class="center">
+  The users who follow<br><br>
+  <span class="larger"><%= @user.handle %></span>
+  <br><br>
+  <% @user.followers.each do |follower|%>
+  <br>
+  <a href= "/users/<% follower.id %>"><%= follower.handle %></a>
+  <br>
+  <% end %>
+</div>

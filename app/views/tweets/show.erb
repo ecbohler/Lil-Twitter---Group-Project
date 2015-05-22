@@ -1,0 +1,25 @@
+<div class="center">
+  <br>
+  <br>
+  <br>
+  <br><span class="larger">
+  <%= Tweet.find(@tweet_id).content %>
+  </span>
+  <span class="r_just">-<%= User.find(@user.id).handle %></span>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  date written:
+  <br>
+  <br>
+  <br>
+  <%= Tweet.find(@tweet_id).created_at %>
+  <br>
+  <br>
+
+
+  <br>
+
+</div>

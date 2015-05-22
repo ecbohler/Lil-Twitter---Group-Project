@@ -1,0 +1,27 @@
+html {
+  background-color: #ddd;
+  padding: 3em;
+}
+
+.header {
+text-align: center;
+font-family: fantasy;
+border-bottom: 5px solid black;
+
+}
+
+.center {
+  text-align: center;
+}
+
+a:hover {
+  font-size: 2em;
+  color: yellow;
+}
+
+.larger {
+  font-size: 2em;
+}
+ .r_just {
+  text-align: right;
+ }
