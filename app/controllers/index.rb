@@ -52,25 +52,31 @@ delete '/users/:user_id' do #delete a specifc user
 end
 
 get '/users/:user_id/followers' do #this is a route that =will display a list of the users followers
+  @user = User.find(params[:user_id])
   erb :'/users/followers'
 end
 
 get '/users/:user_id/following' do #display a llist of who that user is following
+  @user = User.find(params[:user_id])
   erb :'/users/following'
 end
 
 #-------------Tweet route
 
 post '/users/:user_id/tweet' do #creates tweet and redirects to page to view all tweets made by that user
+  Tweet.create(content: params[:content], user_id: params[:user_id]) if session[:user_id] == params[:user_id]
   redirect '/users/:user_id'
 end
 
-get '/users/:user_id/tweet/:tweet_id' do #view a single tweet
+get '/users/:user_id/tweets/:tweet_id' do #view a single tweet
+  @tweet_id = params[:tweet_id]
+  @user = User.find(params[:user_id])
   erb :'tweets/show'
 end
 
 #-------------Follow route
-post 'users/:user_id/follow' do #sends information to follow this user - redirects to that users page
+post 'users/:user_id/follow' do #sends information to follow  this user - redirects to that users page
+  User.find(session[:user_id]).follow User.find(params[:user_id])
  redirect '/users/:user_id'
 end
 
