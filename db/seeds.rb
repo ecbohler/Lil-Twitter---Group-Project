@@ -10,3 +10,6 @@ bob.followers += [susie, erica, paul, majd]
 majd.followers += [susie, erica, paul, bob]
 
 paul_tweet = Tweet.create(content: "Hello World", user_id: 4)
+
+tweet1 = Tweet.create(content: "tweet1", user_id: bob.id)
+tweet2 = Tweet.create(content: "tweet2", user_id: susie.id)

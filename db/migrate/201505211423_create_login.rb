@@ -1,3 +1,5 @@
+# Don't use this table!
+
 class CreateLogin < ActiveRecord::Migration
   def change
     create_table :logins do |t|
