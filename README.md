@@ -31,3 +31,18 @@ Lil-Twitter Group Project
 5. Testing - Continuous process for the group
 
 Be prepared to give and receive specific, actionable, and kind feedback!
+
+### Updates to our Project for 5/22/15
+
+### Morning Tasks
+1. Update schema to reflect name change - followee id to user id and followers(table name) to relationships - DONE
+2. Add sign-out page
+3. Need ERB pages created
+4. Finish routes and split them into separate route file
+
+### Afternoon
+1. Testing
+2. Filter through files and merge/change accordingly
+3. Work on stretch if time permits
+
+Be prepared to give and receive specific, actionable, and kind feedback!
