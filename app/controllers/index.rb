@@ -20,16 +20,17 @@ get '/users/:user_id/feed' do #A user can see a page that list all their tweets 
   erb :"/users/feed"
 end
 
-get '/users/:user_id/edit' do #this will display a form to br able to edit a user profile
+get '/users/:user_id/edit' do #this will display a form to be able to edit a user profile
   erb :"/users/edit"
 end
 
 put '/users/:user_id' do #this will process th form from get '/users/:id/edit' and update user profile
-
-  redirect "/users/#{params[:user_id]}/profile"
+  User.find(params[:user_id]).update_attributes(password_hash: params[:password])
+  redirect "/users/#{params[:user_id]}"
 end
 
-delete '/users/:user_id' do #delete a specifc user
+delete '/users/:user_id/delete' do #delete a specifc user
+  User.find(params[:user_id]).destroy
   redirect "/"
 end
 
