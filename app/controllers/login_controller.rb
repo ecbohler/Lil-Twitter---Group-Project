@@ -29,6 +29,7 @@ end
 
 delete '/sessions/:id' do
   # sign-out -- invoked
+  redirect '/'
 end
 
 #----------- USERS -----------
