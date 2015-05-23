@@ -1,6 +1,5 @@
 get '/' do
   # render home page
- #TODO: Show all users if user is signed in
   erb :sign_in_view
 end
 
