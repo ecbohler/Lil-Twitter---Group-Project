@@ -15,10 +15,10 @@ end
 
 post '/sessions' do
   if params[:handle]
-    @user = Login.find_by(handle: params[:handle])
-    if @user && @user.password_hash == (params[:password])
+    @user = User.find_by(handle: params[:handle])
+    if @user && @user.password == (params[:password])
     #   # Should redirect to the user's profile page
-      session[:id] = @user.id
+      session[:user_id] = @user.id
       redirect '/'
     else
       redirect '/sessions/sign_in/error'
@@ -28,6 +28,7 @@ end
 
 delete '/sessions/:id' do
   # sign-out -- invoked
+  redirect '/'
 end
 
 #----------- USERS -----------
@@ -37,6 +38,9 @@ get '/users/new' do
 end
 
 post '/users' do
-  @user = Login.create(handle: params[:handle], password_hash: params[:password])
-  redirect '/users/new'
+  @user = User.new(handle: params[:handle])
+  @user.password = params[:password]
+
+  @user.save
+  redirect '/' #Should redirect to login page
 end
