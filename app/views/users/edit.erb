@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Change Your Password</h1>
+
+  <% if @error %>
+    <div class="errors"><%= @error %></div>
+  <% end %>
+
+  <form id="password_edit" method="post" action="/users/<%= params[:user_id]%>">
+    <input type="hidden" name="_method" value="put">
+    <label class="label" for="password">Password</label>
+    <input type="password" name="password" placeholder="Enter your new password">
+    <br>
+    <div class="submit"><input type="submit" value="Sign In"></div>
+  </form>
+
+</div>

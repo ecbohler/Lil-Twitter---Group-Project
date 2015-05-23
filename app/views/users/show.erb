@@ -1,6 +1,13 @@
 <div>
   <div><%= @user.handle %></div>
-
+  <div><a href ="/users/<%= @user.id %>/edit">Change your password</a>
+  <!-- <div><a href ="/users/<%= @user.id %>/delete">Delete your account</a> -->
+  <div>
+    <form id="delete_user" method="post" action="/users/<%= @user.id %>/delete">
+      <input type="hidden" name="_method" value="delete">
+      <div class="submit"><input type="submit" value="Delete your account"></div>
+    </form>
+  </div>
   <div>
       <form id="new_tweet" method="post" action="/users/<%=@user.id%>/tweet">
       <label class="label" for="content">Write a new tweet!</label>
